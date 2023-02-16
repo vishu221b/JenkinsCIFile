@@ -1,5 +1,5 @@
 pipeline {
-    agency any
+    agent any
         stages {
             stage('Test CMD'){
                 steps('OUTPUT'){
@@ -9,10 +9,10 @@ pipeline {
                     sh 'docker image ls'
                 }
             }
-            agent {
-                docker { image 'node:16.13.1-alpine' }
-            }
             stage('Test') {
+                agent {
+                    docker { image 'node:16.13.1-alpine' }
+                }
                 steps {
                     sh 'node --version'
                 }
